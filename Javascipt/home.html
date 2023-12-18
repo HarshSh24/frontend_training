@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>JS Training</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <script src="functions.js"></script>
+    <div class="container">
+        <form id="form" method="POST" onsubmit="return validateform()">
+            <div class="form-group">
+                <label for="fname" class="form-label">First Name</label>
+                <input type="text" id="fname" name="fname" class="form-control" >
+                <p id="fname_error"></p>
+            </div>
+            <div class="form-group">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" id="lname" name="lname" class="form-control" >
+                <p id="lname_error"></p>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="form-label">Contact Number</label>
+                <input type="text" id="phone" name="phone" class="form-control" >
+                <p id="phone_error"></p>
+            </div>
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="text" id="email" name="email" class="form-control" >
+                <p id="mail_error"></p>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" >
+                <p id="pass_error"></p>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+/* Style for paragraph elements */
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+  }
+  /* Style for buttons */
+  button {
+    background-color: #4caf50; /* Green background color */
+    color: white; /* White text color */
+    padding: 10px 15px; /* Padding around the text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add some border radius for rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    margin-right: 10px; /* Add some spacing between buttons */
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Style for reset button */
+  button.reset {
+    background-color: #f44336; /* Red background color for reset button */
+  }
+  
+  button.reset:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+  }
+  
+  /* Style for cancel button */
+  button.cancel {
+    background-color: #2196F3; /* Blue background color for cancel button */
+  }
+  
+  button.cancel:hover {
+    background-color: #1e87db; /* Darker blue on hover */
+  }
+  
