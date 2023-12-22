@@ -2,60 +2,24 @@
 <h1>Click on direction buttons to move the color around different cells.</h1>
 <br>
 <br>
-<table>
-  <tr>
-    <td id="0_0"></td>
-    <td id="0_1"></td>
-    <td id="0_2"></td>
-    <td id="0_3"></td>
-    <td id="0_4"></td>
-    <td id="0_5"></td>
-  </tr>
-  <tr>
-    <td id="1_0"></td>
-    <td id="1_1"></td>
-    <td id="1_2"></td>
-    <td id="1_3"></td>
-    <td id="1_4"></td>
-    <td id="1_5"></td>
-  </tr>
-  <tr>
-    <td id="2_0"></td>
-    <td id="2_1"></td>
-    <td id="2_2"></td>
-    <td id="2_3"></td>
-    <td id="2_4"></td>
-    <td id="2_5"></td>
-  </tr>
-  <tr>
-    <td id="3_0"></td>
-    <td id="3_1"></td>
-    <td id="3_2"></td>
-    <td id="3_3"></td>
-    <td id="3_4"></td>
-    <td id="3_5"></td>
-  </tr>
-  <tr>
-    <td id="4_0"></td>
-    <td id="4_1"></td>
-    <td id="4_2"></td>
-    <td id="4_3"></td>
-    <td id="4_4"></td>
-    <td id="4_5"></td>
-  </tr>
-  <tr>
-    <td id="5_0"></td>
-    <td id="5_1"></td>
-    <td id="5_2"></td>
-    <td id="5_3"></td>
-    <td id="5_4"></td>
-    <td id="5_5"></td>
-  </tr>
-</table>
+<div class="container" tabindex="0" (keydown.arrowup)="moveUp()"
+                      (keydown.arrowleft)="moveLeft()"
+                      (keydown.arrowdown)="moveDown()"
+                      (keydown.arrowright)="moveRight()"
+                      (keydown)="changeGrid($event)">
+  <div class="left-element">
+<label for="rows">Rows (between 2 and 10):</label><br>
+<input type="range" id="rows" name="rows" min="2" max="10" [(ngModel)]="total_rows" ><br>
+<label for="cols">Columns (between 2 and 10):</label><br>
+<input type="range" id="cols" name="cols" min="2" max="10" [(ngModel)]="total_columns"><br>
+</div>
+<div class="right-element">
+<button  class="c-btn-up" (click)="moveUp()"></button>
 <br>
-<button style="margin: 20px;" (click)="moveUp()">Up</button>
+<button class="c-btn-left" (click)="moveLeft()"></button> 
+<button  class="c-btn-right" (click)="moveRight()"></button>
 <br>
-<button (click)="moveLeft()">Left</button> 
-<button style="margin: 10px;" (click)="moveRight()">Right</button>
-<br>
-<button style="margin: 20px;" (click)="moveDown()">Down</button>
+<button  class="c-btn-down" (click)="moveDown()"></button>
+</div>
+</div>
+<app-grid [row]="row" [col]="col" [total_rows]="total_rows" [total_columns]="total_columns" (new_row)="updateRow($event)" (new_col)="updateCol($event)"></app-grid>

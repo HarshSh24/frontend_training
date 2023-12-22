@@ -1,0 +1,7 @@
+<table>
+    <tr *ngFor="let r of rows;">
+      <td *ngFor="let c of columns;" style="height: 50px; width: 50px">
+        <div *ngIf="r===row && c===col;" style="height: 50px; width: 50px; position: relative; background-color: aqua;"></div>
+      </td>
+    </tr>
+  </table>

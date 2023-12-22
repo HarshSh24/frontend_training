@@ -1,29 +1,62 @@
-import { Component } from '@angular/core';
-import { AfterViewInit,Inject }  from '@angular/core';
-import { DOCUMENT } from '@angular/common'; 
+import { Component} from '@angular/core';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent implements OnInit{
   row=0;
   col=0;
+  total_rows:number=5;
+  total_columns:number=5;
+  rows:number[]=[];
+  columns:number[]=[];
   id="";
   title = 'grid_game';
-  constructor(@Inject(DOCUMENT) private document: Document){}
 
-  ngAfterViewInit(): void {
-    this.id=this.row.toString()+"_"+this.col.toString();
-    this.document.getElementById(this.id)?.setAttribute("style","background:red");
+  ngOnInit(){
+    for(let j=0;j<this.total_rows;j++){
+      this.rows.push(j);
+    }
+    for(let j=0;j<this.total_columns;j++){
+      this.columns.push(j);
+    }
   }
-  recolor(row:number,col:number){
-    this.id=row.toString()+"_"+col.toString();
-    this.document.getElementById(this.id)?.setAttribute("style","background:white");
+
+  changeGrid(event:KeyboardEvent){
+    if(event.shiftKey){
+      if(this.total_rows!=10 && event.key==='ArrowDown')
+      this.total_rows+=1;
+      else if(this.total_rows!=2 && event.key==='ArrowUp')
+      this.total_rows-=1;
+      else if(this.total_columns!=10 && event.key==='ArrowRight')
+      this.total_columns+=1;
+      else if(this.total_columns!=2 && event.key==='ArrowLeft')
+      this.total_columns-=1;
+    }
   }
+
+  increaseRows(event: KeyboardEvent){
+    if(this.total_rows!=10 && event.key==='ArrowDown')
+    this.total_rows+=1
+  }
+ decreaseRows(event: KeyboardEvent){
+    if(this.total_rows!=2 && event.key==='ArrowUp')
+    this.total_rows-=1
+  }
+  increaseColumns(event: KeyboardEvent){
+    if(this.total_columns!=10 && event.key==='ArrowRight')
+    this.total_columns+=1
+  }
+ decreaseColumns(event: KeyboardEvent){
+    if(this.total_columns!=2 && event.key==='ArrowLeft')
+    this.total_columns-=1
+  }
+
   check(){
-    if(this.col>5 || this.row>5 || this.row<0 || this.col<0) return false
+    if(this.col>this.total_columns-1 || this.row>this.total_rows-1 || this.row<0 || this.col<0) return false
     return true
   }
   moveUp(){
@@ -32,10 +65,6 @@ export class AppComponent implements AfterViewInit{
       this.row+=1;
       alert("This move is not allowed");
     }
-    else{
-      this.recolor(this.row+1,this.col);
-      this.ngAfterViewInit();
-    }
   }
   moveDown(){
     this.row+=1;
@@ -43,20 +72,12 @@ export class AppComponent implements AfterViewInit{
       this.row-=1;
       alert("This move is not allowed");
     }
-    else{
-      this.recolor(this.row-1,this.col);
-      this.ngAfterViewInit();
-    }
   }
   moveLeft(){
     this.col-=1;
     if(!this.check()) {
       this.col+=1
       alert("This move is not allowed");
-    }
-    else{
-      this.recolor(this.row,this.col+1);
-      this.ngAfterViewInit();
     }
     
   }
@@ -66,9 +87,12 @@ export class AppComponent implements AfterViewInit{
       this.col-=1;
       alert("This move is not allowed");
     }
-    else{
-      this.recolor(this.row,this.col-1);
-      this.ngAfterViewInit();
-    }
+  }
+  updateRow(new_row: number) {
+    this.row=new_row;
+  }
+
+  updateCol(new_col: number) {
+    this.col=new_col;
   }
 }
